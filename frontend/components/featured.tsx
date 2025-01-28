@@ -13,7 +13,7 @@ import {
 import useEmblaCarousel from "embla-carousel-react"
 import Autoplay from "embla-carousel-autoplay"
 
-export function MainCarousel() {
+export function FeaturedItems() {
   const autoplay = Autoplay({ delay: 3000, stopOnInteraction: true });
   const [emblaRef] = useEmblaCarousel({ loop: true }, [autoplay]);
 
@@ -26,37 +26,37 @@ export function MainCarousel() {
     onMouseLeave={autoplay.reset}
     >
       <CarouselContent>
-          <CarouselItem className="md:basis-1/2 lg:basis-full">
+          <CarouselItem className="md:basis-1/2 lg:basis-1/4">
             <div className="p-1">
               <Card>
                 <CardContent className="flex aspect-auto items-center justify-center p-6">
                   <Image  
-                    src={`/newyear-2.jpg?height=300&width=300&text=Slide ${1}`}
+                    src={`/products/Mega-Check-Blood-Pressure-Monitoring-System_Medixmart.jpg?height=300&width=300&text=Slide ${1}`}
                     alt={`Slide ${1}`}
-                    width={1000}
-                    height={1000}
+                    width={200}
+                    height={200}
                     className="rounded-md object-cover"
                   />
                 </CardContent>
               </Card>
             </div>
           </CarouselItem>
-          <CarouselItem className="md:basis-1/2 lg:basis-full">
+          <CarouselItem className="md:basis-1/2 lg:basis-1/4">
             <div className="p-1">
               <Card>
                 <CardContent className="flex aspect-auto items-center justify-center p-6">
                   <Image  
                     src={`/pharmacy-2.jpg?height=300&width=300&text=Slide ${2}`}
                     alt={`Slide ${2}`}
-                    width={1000}
-                    height={1000}
+                    width={300}
+                    height={300}
                     className="rounded-md object-cover"
                   />
                 </CardContent>
               </Card>
             </div>
           </CarouselItem>
-          <CarouselItem className="md:basis-1/2 lg:basis-full">
+          <CarouselItem className="md:basis-1/2 lg:basis-1/4">
             <div className="p-1">
               <Card>
                 <CardContent className="flex aspect-auto items-center justify-center p-6">
@@ -71,7 +71,7 @@ export function MainCarousel() {
               </Card>
             </div>
           </CarouselItem>
-          <CarouselItem className="md:basis-1/2 lg:basis-full">
+          <CarouselItem className="md:basis-1/2 lg:basis-1/4">
             <div className="p-1">
               <Card>
                 <CardContent className="flex aspect-auto items-center justify-center p-6">
