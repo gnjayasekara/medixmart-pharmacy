@@ -79,6 +79,7 @@ Built using **Next.js**, this website focuses on accessibility, efficiency, and 
 Contrubutors:
 - Mr. Nimtharu Jayasekara (https://github.com/gnjayasekara).
 - Ms. Dahami Fonseka (https://github.com/DahamiFonseka).
+- Ms. Chethana Wijesinghe (https://github.com/ChethanaWijesinghe10)
 
 ---
 
