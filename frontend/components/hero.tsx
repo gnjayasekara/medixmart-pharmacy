@@ -13,7 +13,7 @@ import {
 import useEmblaCarousel from "embla-carousel-react"
 import Autoplay from "embla-carousel-autoplay"
 
-export function AutoplayCarousel() {
+export function MainCarousel() {
   const autoplay = Autoplay({ delay: 3000, stopOnInteraction: true });
   const [emblaRef] = useEmblaCarousel({ loop: true }, [autoplay]);
 
@@ -86,7 +86,6 @@ export function AutoplayCarousel() {
               </Card>
             </div>
           </CarouselItem>
-          
       </CarouselContent>
       <CarouselPrevious />
       <CarouselNext />
