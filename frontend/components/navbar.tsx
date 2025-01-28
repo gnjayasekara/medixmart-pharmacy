@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link'
-import { Home, Info, Phone, Menu, Search, ClipboardPlus } from 'lucide-react'
+import { Home, ShoppingBasket, Info, Phone, Menu, Search, ClipboardPlus } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import {
   Sheet,
@@ -32,7 +32,7 @@ export function Navbar() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          +94 756982000
+          +(94) 75 698 2000
         </a>
         </div>
       </div>
@@ -105,17 +105,22 @@ export function Navbar() {
       <>
         <Button asChild variant="ghost" className="hover:text-[hsl(var(--primary))]">
           <Link href="/">
-            <Home className="mr-2 h-4 w-4" /> Home
+            <Home className="ml-2 h-4 w-4" /> Home
+          </Link>
+        </Button>
+        <Button asChild variant="ghost" className="hover:text-[hsl(var(--primary))]">
+          <Link href="/products">
+            <ShoppingBasket className="ml-2 h-4 w-4" /> Products
           </Link>
         </Button>
         <Button asChild variant="ghost" className="hover:text-[hsl(var(--primary))]">
           <Link href="/about">
-            <Info className="mr-2 h-4 w-4" /> About
+            <Info className="ml-2 h-4 w-4" /> About
           </Link>
         </Button>
         <Button asChild variant="ghost" className="hover:text-[hsl(var(--primary))]">
           <Link href="/contact">
-            <Phone className="mr-2 h-4 w-4" /> Contact
+            <Phone className="ml-2 h-4 w-4" /> Contact
           </Link>
         </Button>
       </>
