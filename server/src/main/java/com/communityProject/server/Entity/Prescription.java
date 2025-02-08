@@ -31,10 +31,18 @@ public class Prescription {
     private String patientAddress;
 
     @Column(name = "patientPhone", length = 100, nullable = false)
-    private int patientPhone;
+    private String patientPhone;
 
-    @Column(name = "fileUrl", length = 100, nullable = false)
-    private String fileUrl;
+    @Lob
+    private byte[] file;
+
+    public byte[] getFile() {
+        return file;
+    }
+
+    public void setFile(byte[] file) {
+        this.file = file;
+    }
 
     @Column(name = "createdDate", length = 100, nullable = false)
     private Date createdDate;

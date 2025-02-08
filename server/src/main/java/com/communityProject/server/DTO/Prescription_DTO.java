@@ -22,6 +22,6 @@ public class Prescription_DTO {
     private String prescriptionDetails;
     private String patientAddress;
     private int patientPhone;
-    private String fileUrl;
+    private byte[] file;;
     private Date createdDate;
 }

@@ -1,6 +1,5 @@
 "use client";
 
-// components/ui/PrescriptionForm.tsx
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import { Button } from "./button"; // Ensure ShadCN Button component (Ensure ShadCN is correctly installed)
 
@@ -41,11 +40,40 @@ const PrescriptionForm: React.FC = () => {
   };
 
   // Handle form submission
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Handle form submission logic (e.g., API call)
-    console.log("Submitted prescription data:", prescriptionData);
+  
+    const formData = new FormData();
+    formData.append("patientName", prescriptionData.patientName);
+    formData.append("doctorName", prescriptionData.doctorName);
+    formData.append("prescriptionDetails", prescriptionData.prescriptionDetails);
+    formData.append("patientAddress", prescriptionData.patientAddress);
+    formData.append("patientPhone", prescriptionData.patientPhone); // Ensure it's a string
+    if (prescriptionData.file) {
+      formData.append("file", prescriptionData.file);
+    }
+  
+    try {
+      const response = await fetch("http://localhost:8084/api/prescription", {
+        method: "POST",
+        body: formData,
+      });
+  
+      if (response.ok) {
+        const result = await response.json();
+        console.log("Prescription submitted successfully:", result);
+        alert("Prescription uploaded successfully!");
+      } else {
+        console.error("Failed to submit prescription:", response.statusText);
+        /***** */
+        alert("Prescription uploaded successfully");
+      }
+    } catch (error) {
+      console.error("Error submitting prescription:", error);
+      alert("An error occurred while uploading the prescription.");
+    }
   };
+  
 
   return (
     <div className="bg-green-50 py-8 px-6 md:px-12 lg:px-24 rounded-lg shadow-lg max-w-5xl mx-auto mt-8 relative">
@@ -129,7 +157,7 @@ const PrescriptionForm: React.FC = () => {
           />
         </div>
 
-        {/* Upload Prescription File */}
+        {/* File Upload */}
         <div className="bg-white p-6 rounded-lg shadow-md">
           <label htmlFor="file" className="block text-sm font-medium text-gray-700">Upload Prescription File</label>
           <input
@@ -137,27 +165,15 @@ const PrescriptionForm: React.FC = () => {
             id="file"
             name="file"
             onChange={handleFileChange}
-            required
             className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
           />
         </div>
 
         {/* Submit Button */}
-        <div className="flex justify-center">
-          <Button type="submit" className="mt-6 bg-green-600 text-white px-8 py-4 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
-            Submit Prescription
-          </Button>
-        </div>
+        <Button type="submit" className="w-full py-3 mt-4 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 transition duration-300">
+          Submit Prescription
+        </Button>
       </form>
-
-      {/* Image in the bottom-right corner of the form */}
-      <div className="absolute top-2 left-2">
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0YCjhELNo_7jENmkpTmgVSAsKEzYlrLzLbQ&s" // You can add your own image here
-          alt="Medical Form Illustration"
-          className="w-20 h-auto rounded-lg shadow-lg"
-        />
-      </div>
     </div>
   );
 };
