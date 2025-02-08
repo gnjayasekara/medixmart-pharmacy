@@ -17,7 +17,7 @@ export default function Home() {
       <h1 className="text-3xl font-bold text-center mt-10 mb-6">Featured Items</h1>
       <FeaturedItems/>
       <Divider />
-      <PrescriptionForm/>
+      
       
       
       

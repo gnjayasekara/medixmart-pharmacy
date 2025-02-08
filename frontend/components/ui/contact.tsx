@@ -14,7 +14,7 @@ const Contact = () => {
             <Phone className="text-white" size={24} />
             <div>
               <p className="text-sm font-semibold">PHONE</p>
-              <p className="text-sm">000000000</p>
+              <p className="text-sm">+(94) 75 698 2000</p>
             </div>
           </div>
 
@@ -22,7 +22,7 @@ const Contact = () => {
             <Mail className="text-white" size={24} />
             <div>
               <p className="text-sm font-semibold">EMAIL</p>
-              <p className="text-sm">000000000</p>
+              <p className="text-sm">medixmartpharmacy@gmail.com</p>
             </div>
           </div>
 
@@ -30,7 +30,7 @@ const Contact = () => {
             <MapPin className="text-white" size={24} />
             <div>
               <p className="text-sm font-semibold">LOCATION</p>
-              <p className="text-sm">000000000</p>
+              <p className="text-sm">Bellihuloya, Galagama</p>
             </div>
           </div>
         </div>
