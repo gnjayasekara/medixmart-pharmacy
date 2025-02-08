@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Blob;
+
 
 @Entity
 @Data
@@ -15,6 +15,7 @@ import java.sql.Blob;
 @Table(name = "drug_details")
 
 public class Drugs {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "drug_id")
@@ -26,16 +27,22 @@ public class Drugs {
     @Column(name = "drug_price", nullable = false)
     private double drugPrice;
 
-    @Column(name = "drug_SKU", nullable = false)
-    private int drugSKU;
+    @Column(name = "drug_description", length = 1000, nullable = false)
+    private String drugDescription;
+
+    @Column(name = "drug_SKU", nullable = false, unique = true)
+    private String drugSKU;
 
     @Column(name = "generic", length = 100, nullable = false)
     private String generic;
 
-    @Column(name = "packSize", length = 100, nullable = false)
+    @Column(name = "pack_size", nullable = false)
     private int packSize;
 
+    @Column(name = "category", length = 100, nullable = false) 
+    private String category;
+
     @Lob
-    @Column(name = "photo")
-    private Blob photo;
+    @Column(name = "photo", columnDefinition = "LONGBLOB")
+    private byte[] photo;
 }

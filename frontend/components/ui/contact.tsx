@@ -113,7 +113,17 @@ const Contact = () => {
     <div className="flex flex-col md:flex-row bg-gray-100 p-8 rounded-lg shadow-lg">
       {/* Contact Details */}
       <div className="bg-green-600 text-white p-8 md:w-1/3 rounded-lg flex flex-col justify-center">
-        <h2 className="text-2xl font-bold mb-2">Contact Us</h2>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d495.3011723356056!2d80.7721401!3d6.7197968!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae38b000fa4533f%3A0x4203a37585095e01!2sMedixmart%20Pharmacy%20Belihuloya!5e0!3m2!1sen!2slk!4v1739049534186!5m2!1sen!2slk"
+        width="400"
+        height="400"
+        style={{ border: 0 }} 
+        allowFullScreen
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+      />
+
+        <h2 className="text-2xl font-bold mb-2 mt-4">Contact Us</h2>
         <p className="text-sm mb-6">We're here to help you</p>
 
         <div className="space-y-6">

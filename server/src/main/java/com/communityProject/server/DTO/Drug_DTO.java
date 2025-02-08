@@ -26,6 +26,7 @@ public class Drug_DTO {
 
     private int packSize;
 
-    private Blob photo;
+    private byte[] photo;
+
 
 }

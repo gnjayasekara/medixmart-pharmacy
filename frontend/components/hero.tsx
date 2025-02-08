@@ -31,7 +31,7 @@ export function MainCarousel() {
               <Card>
                 <CardContent className="flex aspect-auto items-center justify-center p-6">
                   <Image  
-                    src={`/newyear-2.jpg?height=300&width=300&text=Slide ${1}`}
+                    src={`/medixmart-background-2.jpg?height=300&width=300&text=Slide ${1}`}
                     alt={`Slide ${1}`}
                     width={1000}
                     height={1000}

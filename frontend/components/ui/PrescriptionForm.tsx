@@ -57,7 +57,7 @@ const PrescriptionForm: React.FC = () => {
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Patient Name */}
         <div className="bg-white p-6 rounded-lg shadow-md">
-          <label htmlFor="patientName" className="block text-sm font-medium text-gray-700">Patient Name</label>
+          <label htmlFor="patientName" className="block text-sm font-medium text-gray-700">Name</label>
           <input
             type="text"
             id="patientName"
@@ -87,7 +87,7 @@ const PrescriptionForm: React.FC = () => {
 
         {/* Patient Address */}
         <div className="bg-white p-6 rounded-lg shadow-md">
-          <label htmlFor="patientAddress" className="block text-sm font-medium text-gray-700">Patient Address</label>
+          <label htmlFor="patientAddress" className="block text-sm font-medium text-gray-700">Address</label>
           <input
             type="text"
             id="patientAddress"
@@ -102,7 +102,7 @@ const PrescriptionForm: React.FC = () => {
 
         {/* Patient Phone */}
         <div className="bg-white p-6 rounded-lg shadow-md">
-          <label htmlFor="patientPhone" className="block text-sm font-medium text-gray-700">Patient Phone Number</label>
+          <label htmlFor="patientPhone" className="block text-sm font-medium text-gray-700">Phone Number</label>
           <input
             type="tel"
             id="patientPhone"
@@ -144,9 +144,13 @@ const PrescriptionForm: React.FC = () => {
 
         {/* Submit Button */}
         <div className="flex justify-center">
-          <Button type="submit" className="mt-6 bg-green-600 text-white px-8 py-4 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
-            Submit Prescription
-          </Button>
+        <Button
+          type="submit"
+          className="mt-6 bg-green-600 text-white px-8 py-4 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+          onClick={() => alert("Successfully uploaded!")} 
+        >
+          Submit Prescription
+        </Button>
         </div>
       </form>
 
