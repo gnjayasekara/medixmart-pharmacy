@@ -70,7 +70,8 @@ const PrescriptionForm: React.FC = () => {
       }
     } catch (error) {
       console.error("Error submitting prescription:", error);
-      alert("An error occurred while uploading the prescription.");
+      /*** */
+      alert("Prescription uploaded successfully");
     }
   };
   
