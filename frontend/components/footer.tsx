@@ -13,7 +13,7 @@ export function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-4">About Us</h3>
             <p className="text-sm">
-              We are a company dedicated to providing excellent services and products to our customers.
+              We are a pharmacy dedicated to providing excellent services and products to our customers.
             </p>
           </div>
           <div>
@@ -43,18 +43,7 @@ export function Footer() {
           </div>
           <div>
           <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
-            <p className="text-sm flex items-center">
-              <a
-                href="https://maps.app.goo.gl/62U1BTsjApAGMtiRA"
-                className="flex items-center font-bold hover:underline"
-                style={{ color: "hsl(var(--primary-foreground))" }}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <MapPin size={20} className="mr-2" />
-                123 Main St, Anytown, USA 12345
-              </a>
-            </p>
+            
             <p className="text-sm">Email: 
               <a href="mailto:
                 medixmartpharmacy@gmail.com"
@@ -74,6 +63,18 @@ export function Footer() {
                 rel="noopener noreferrer"
               >
                 +(94) 75 698 2000
+              </a>
+            </p>
+            <p className="text-sm flex items-center">
+              <a
+                href="https://maps.app.goo.gl/62U1BTsjApAGMtiRA"
+                className="flex items-center font-bold hover:underline"
+                style={{ color: "hsl(var(--primary-foreground))" }}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <MapPin size={20} className="mr-2" />
+                Bellihuloya, Galagama
               </a>
             </p>
             
@@ -97,7 +98,7 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-8 pt-8 border-t border-emerald-600 text-center">
-          <p className="text-sm">&copy; 2025 Your Company Name. All rights reserved.</p>
+          <p className="text-sm">&copy; 2025 MedixMart Pharmacy. All rights reserved.</p>
         </div>
       </div>
     </footer>

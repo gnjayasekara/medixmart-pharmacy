@@ -13,7 +13,7 @@ const categories = [
 ]
 
 export default function ProductsPage() {
-  const [selectedCategory, setSelectedCategory] = useState<string>(categories[0].id)
+  const [selectedCategory, setSelectedCategory] = useState(categories[0].id)
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -33,3 +33,4 @@ export default function ProductsPage() {
     </div>
   )
 }
+

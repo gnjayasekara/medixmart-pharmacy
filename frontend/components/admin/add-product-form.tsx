@@ -62,7 +62,9 @@ export function AddProductForm({ onCancel }: AddProductFormProps) {
         <Button type="button" variant="outline" onClick={onCancel}>
           Cancel
         </Button>
-        <Button type="submit">Add Product</Button>
+        <Button type="submit"
+        onClick={() => alert("Successfully added!")}
+        >Add Product</Button>
       </div>
     </form>
   )
