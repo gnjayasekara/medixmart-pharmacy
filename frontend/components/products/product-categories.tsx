@@ -28,4 +28,3 @@ export function ProductCategories({ categories, selectedCategory, onSelectCatego
     </div>
   )
 }
-

@@ -3,7 +3,6 @@ import { MainCarousel } from "@/components/hero";
 import { FeaturedItems } from "@/components/featured";
 import { Truck, TimerReset, FastForward } from 'lucide-react'
 import { Separator } from "@/components/ui/separator"
-import PrescriptionForm from "@/components/ui/PrescriptionForm";
 
 
 

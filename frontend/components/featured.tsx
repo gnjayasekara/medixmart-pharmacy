@@ -46,7 +46,7 @@ export function FeaturedItems() {
               <Card>
                 <CardContent className="flex aspect-auto items-center justify-center p-6">
                   <Image  
-                    src={`/pharmacy-2.jpg?height=300&width=300&text=Slide ${2}`}
+                    src={`/products/Foracort-Dp-Caps-200-Mcg_Carelink-300x300.jpg?height=300&width=300&text=Slide ${1}`}
                     alt={`Slide ${2}`}
                     width={300}
                     height={300}
@@ -61,7 +61,7 @@ export function FeaturedItems() {
               <Card>
                 <CardContent className="flex aspect-auto items-center justify-center p-6">
                   <Image  
-                    src={`/medixmart-background-2.jpg?height=300&width=300&text=Slide ${1}`}
+                    src={`/products/Rectol_Carelink-300x300.jpg?height=300&width=300&text=Slide ${1}`}
                     alt={`Slide ${1}`}
                     width={1000}
                     height={1000}
@@ -76,7 +76,7 @@ export function FeaturedItems() {
               <Card>
                 <CardContent className="flex aspect-auto items-center justify-center p-6">
                   <Image  
-                    src={`/medixmart-background-3.jpg?height=300&width=300&text=Slide ${1}`}
+                    src={`/products/Ceretide-250mg_carelink-300x300.jpg?height=300&width=300&text=Slide ${1}`}
                     alt={`Slide ${1}`}
                     width={1000}
                     height={1000}
