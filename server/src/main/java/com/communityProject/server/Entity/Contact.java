@@ -13,11 +13,11 @@ import lombok.NoArgsConstructor;
 
 public class Contact {
 
-    @Id
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "contact_id")
-    private int id;
-
+    @Id
+    private Long id;
     @Column(name = "name", length = 100, nullable=false)
     private String name;
 
