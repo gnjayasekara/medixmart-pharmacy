@@ -1,8 +1,6 @@
 package com.communityProject.server.Entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,6 +12,12 @@ import lombok.NoArgsConstructor;
 @Table(name = "contact_details")
 
 public class Contact {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "contact_id")
+    private int id;
+
     @Column(name = "name", length = 100, nullable=false)
     private String name;
 
