@@ -1,7 +1,7 @@
-package com.communityProject.server.service;
+package com.communityProject.server.Service;
 
-import com.communityProject.server.entity.Drugs;
-import com.communityProject.server.repository.DrugsRepository;
+import com.communityProject.server.Entity.Drugs;
+import com.communityProject.server.Repo.DrugsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class DrugService {
+public class DrugsService {
 
     @Autowired
     private DrugsRepository drugsRepository;
@@ -22,19 +22,23 @@ public class DrugService {
     }
 
     // Save a new product with an image
-    public Drugs saveProduct(String name, String description, double price, String category, MultipartFile photo) throws IOException {
+    public Drugs saveProduct(String name, String description, double price, String category, String drugSKU, MultipartFile photo) throws IOException {
         Drugs drug = new Drugs();
-        drug.setName(name);
-        drug.setDescription(description);
-        drug.setPrice(price);
+        drug.setDrugName(name);
+        drug.setDrugDescription(description);
+        drug.setDrugPrice(price);
         drug.setCategory(category);
+        drug.setDrugSKU(drugSKU);
         drug.setPhoto(photo.getBytes());
         return drugsRepository.save(drug);
     }
+    
 
     // Get product image by ID
     public byte[] getProductImage(int id) {
-        Optional<Drugs> drug = drugsRepository.findById(id);
-        return drug.map(Drugs::getPhoto).orElse(null);
+        return drugsRepository.findById(id)
+                .map(Drugs::getPhoto)
+                .orElseThrow(() -> new RuntimeException("Product not found"));
     }
+
 }
