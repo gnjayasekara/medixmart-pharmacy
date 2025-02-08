@@ -48,7 +48,7 @@ const PrescriptionForm: React.FC = () => {
   };
 
   return (
-    <div className="bg-blue-50 py-8 px-4 rounded-lg shadow-lg max-w-4xl mx-auto mt-8">
+    <div className="bg-green-50 py-8 px-6 md:px-12 lg:px-24 rounded-lg shadow-lg max-w-5xl mx-auto mt-8 relative">
       <div className="text-center mb-6">
         <h2 className="text-3xl font-bold text-gray-800">Prescription Upload</h2>
         <p className="text-lg text-gray-500">Please fill out the form to upload prescription details.</p>
@@ -56,7 +56,7 @@ const PrescriptionForm: React.FC = () => {
 
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Patient Name */}
-        <div className="bg-white p-4 rounded-lg shadow-md">
+        <div className="bg-white p-6 rounded-lg shadow-md">
           <label htmlFor="patientName" className="block text-sm font-medium text-gray-700">Patient Name</label>
           <input
             type="text"
@@ -71,7 +71,7 @@ const PrescriptionForm: React.FC = () => {
         </div>
 
         {/* Doctor Name */}
-        <div className="bg-white p-4 rounded-lg shadow-md">
+        <div className="bg-white p-6 rounded-lg shadow-md">
           <label htmlFor="doctorName" className="block text-sm font-medium text-gray-700">Doctor Name</label>
           <input
             type="text"
@@ -86,7 +86,7 @@ const PrescriptionForm: React.FC = () => {
         </div>
 
         {/* Patient Address */}
-        <div className="bg-white p-4 rounded-lg shadow-md">
+        <div className="bg-white p-6 rounded-lg shadow-md">
           <label htmlFor="patientAddress" className="block text-sm font-medium text-gray-700">Patient Address</label>
           <input
             type="text"
@@ -101,7 +101,7 @@ const PrescriptionForm: React.FC = () => {
         </div>
 
         {/* Patient Phone */}
-        <div className="bg-white p-4 rounded-lg shadow-md">
+        <div className="bg-white p-6 rounded-lg shadow-md">
           <label htmlFor="patientPhone" className="block text-sm font-medium text-gray-700">Patient Phone Number</label>
           <input
             type="tel"
@@ -116,7 +116,7 @@ const PrescriptionForm: React.FC = () => {
         </div>
 
         {/* Prescription Details */}
-        <div className="bg-white p-4 rounded-lg shadow-md">
+        <div className="bg-white p-6 rounded-lg shadow-md">
           <label htmlFor="prescriptionDetails" className="block text-sm font-medium text-gray-700">Prescription Details</label>
           <textarea
             id="prescriptionDetails"
@@ -130,7 +130,7 @@ const PrescriptionForm: React.FC = () => {
         </div>
 
         {/* Upload Prescription File */}
-        <div className="bg-white p-4 rounded-lg shadow-md">
+        <div className="bg-white p-6 rounded-lg shadow-md">
           <label htmlFor="file" className="block text-sm font-medium text-gray-700">Upload Prescription File</label>
           <input
             type="file"
@@ -144,18 +144,18 @@ const PrescriptionForm: React.FC = () => {
 
         {/* Submit Button */}
         <div className="flex justify-center">
-          <Button type="submit" className="mt-4 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+          <Button type="submit" className="mt-6 bg-green-600 text-white px-8 py-4 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
             Submit Prescription
           </Button>
         </div>
       </form>
 
-      {/* Optional: Add an image or illustration */}
-      <div className="mt-8 text-center">
+      {/* Image in the bottom-right corner of the form */}
+      <div className="absolute top-2 left-2">
         <img
-          src="/images/medical-image.jpg" // You can add your own image here
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0YCjhELNo_7jENmkpTmgVSAsKEzYlrLzLbQ&s" // You can add your own image here
           alt="Medical Form Illustration"
-          className="w-full max-w-md mx-auto rounded-lg shadow-lg"
+          className="w-20 h-auto rounded-lg shadow-lg"
         />
       </div>
     </div>
