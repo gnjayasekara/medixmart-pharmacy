@@ -7,11 +7,14 @@ import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
-@Entity
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Prescription_DTO {
+
+    private Long id;
+
     private String patientName;
 
     private String doctorName;

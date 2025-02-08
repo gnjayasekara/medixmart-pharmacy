@@ -1,9 +1,6 @@
 package com.communityProject.server.Entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.PrePersist;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,6 +14,9 @@ import java.util.Date;
 @Table(name = "prescription_details")
 
 public class Prescription {
+
+    @Id
+    private Long id;
 
     @Column(name = "patient_name", length = 100, nullable = false)
     private String patientName;

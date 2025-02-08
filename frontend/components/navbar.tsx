@@ -147,13 +147,14 @@ export function Navbar() {
 
   function UploadPrescriptions() {
     return (
-      <div className="flex justify-end">
-        <Button asChild variant="ghost" className="hover:text-[hsl(var(--primary))]">
-          <Link href="/upload-prescriptions" className="flex items-center">
-            <ClipboardPlus className="ml-5 h-4 w-4" />
-            Upload Prescriptions
-          </Link>
-        </Button>
-      </div>
+        <div className="flex justify-end">
+            <Button asChild variant="ghost" className="hover:text-[hsl(var(--primary))]">
+                <Link href="/upload-prescriptions" className="flex items-center">
+                    <ClipboardPlus className="ml-5 h-4 w-4" />
+                    Upload Prescriptions
+                </Link>
+            </Button>
+        </div>
     );
-  }
+}
+
