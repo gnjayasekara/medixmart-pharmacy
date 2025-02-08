@@ -12,6 +12,9 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Prescription_DTO {
+
+    private Long id;
+
     private String patientName;
 
     private String doctorName;
