@@ -32,7 +32,19 @@ public class DrugsService {
         drug.setPhoto(photo.getBytes());
         return drugsRepository.save(drug);
     }
-    
+
+    public Drugs getDrugById(int id) {
+        Optional<Drugs> drug = drugsRepository.findById(id);
+        if (drug.isPresent()) {
+            System.out.println("Found Drug: " + drug.get());
+            return drug.get();
+        } else {
+            System.out.println("No drug found with ID: " + id);
+            return null;
+        }
+    }
+
+
 
     // Get product image by ID
     public byte[] getProductImage(int id) {

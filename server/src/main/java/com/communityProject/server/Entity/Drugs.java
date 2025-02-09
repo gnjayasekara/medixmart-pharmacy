@@ -1,6 +1,7 @@
 package com.communityProject.server.Entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,7 +31,7 @@ public class Drugs {
     @Column(name = "drug_description", length = 1000, nullable = false)
     private String drugDescription;
 
-    @Column(name = "drug_SKU", nullable = false, unique = true)
+    @Column(name = "drug_sku", nullable = false, unique = true)
     private String drugSKU;
 
     @Column(name = "generic", length = 100, nullable = false)
@@ -43,6 +44,7 @@ public class Drugs {
     private String category;
 
     @Lob
+    @JsonIgnore
     @Column(name = "photo", columnDefinition = "LONGBLOB")
     private byte[] photo;
 }
