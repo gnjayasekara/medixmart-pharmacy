@@ -28,29 +28,29 @@ async function fetchProductsByCategory(categoryId: string): Promise<Product[]> {
         id: "b1",
         name: "Baby Diapers",
         description: "Ultra-soft diapers for sensitive skin",
-        price: 19.99,
-        image: "/placeholder.svg?height=200&width=200&text=Baby+Diapers",
+        price: 2500,
+        image: "products/Ceretide-250mg_carelink-300x300.jpg?height=200&width=200&text=Baby+Diapers",
       },
       {
         id: "b1",
         name: "Baby Diapers",
         description: "Ultra-soft diapers for sensitive skin",
-        price: 19.99,
-        image: "/placeholder.svg?height=200&width=200&text=Baby+Diapers",
+        price: 1900,
+        image: "products/Foracort-Dp-Caps-200-Mcg_Carelink-300x300.jpg?height=200&width=200&text=Baby+Diapers",
       },
       {
         id: "b1",
         name: "Baby Diapers",
         description: "Ultra-soft diapers for sensitive skin",
-        price: 19.99,
-        image: "/placeholder.svg?height=200&width=200&text=Baby+Diapers",
+        price: 1300,
+        image: "products/Ceretide-250mg_carelink-300x300.jpg?height=200&width=200&text=Baby+Diapers",
       },
       {
         id: "b2",
         name: "Baby Wipes",
         description: "Gentle, fragrance-free wipes",
-        price: 5.99,
-        image: "/placeholder.svg?height=200&width=200&text=Baby+Wipes",
+        price: 600,
+        image: "products/Ceretide-250mg_carelink-300x300.jpg?height=200&width=200&text=Baby+Diapers",
       },
     ],
     medical: [
@@ -58,14 +58,14 @@ async function fetchProductsByCategory(categoryId: string): Promise<Product[]> {
         id: "m1",
         name: "Digital Thermometer",
         description: "Fast and accurate temperature readings",
-        price: 12.99,
+        price: 1500,
         image: "/placeholder.svg?height=200&width=200&text=Thermometer",
       },
       {
         id: "m2",
         name: "Blood Pressure Monitor",
         description: "Easy-to-use home BP monitor",
-        price: 49.99,
+        price: 4300,
         image: "/placeholder.svg?height=200&width=200&text=BP+Monitor",
       },
     ],
@@ -74,14 +74,14 @@ async function fetchProductsByCategory(categoryId: string): Promise<Product[]> {
         id: "o1",
         name: "Pain Relief Tablets",
         description: "Fast-acting pain relief",
-        price: 8.99,
+        price: 800,
         image: "/placeholder.svg?height=200&width=200&text=Pain+Relief",
       },
       {
         id: "o2",
         name: "Cough Syrup",
         description: "Soothes throat and suppresses cough",
-        price: 7.99,
+        price: 700,
         image: "/placeholder.svg?height=200&width=200&text=Cough+Syrup",
       },
     ],
@@ -90,14 +90,14 @@ async function fetchProductsByCategory(categoryId: string): Promise<Product[]> {
         id: "p1",
         name: "Toothpaste",
         description: "Fluoride toothpaste for cavity protection",
-        price: 3.99,
+        price: 3420,
         image: "/placeholder.svg?height=200&width=200&text=Toothpaste",
       },
       {
         id: "p2",
         name: "Shampoo",
         description: "Nourishing shampoo for all hair types",
-        price: 6.99,
+        price: 8940,
         image: "/placeholder.svg?height=200&width=200&text=Shampoo",
       },
     ],
@@ -106,14 +106,14 @@ async function fetchProductsByCategory(categoryId: string): Promise<Product[]> {
         id: "v1",
         name: "Multivitamin",
         description: "Daily multivitamin for adults",
-        price: 15.99,
+        price: 1599,
         image: "/placeholder.svg?height=200&width=200&text=Multivitamin",
       },
       {
         id: "v2",
         name: "Vitamin C",
         description: "Immune system support",
-        price: 9.99,
+        price: 999,
         image: "/placeholder.svg?height=200&width=200&text=Vitamin+C",
       },
     ],
@@ -149,10 +149,10 @@ export function ProductList({ categoryId }: ProductListProps) {
             />
             <h3 className="text-lg font-semibold">{product.name}</h3>
             <p className="text-sm text-gray-600">{product.description}</p>
-            <p className="text-lg font-bold mt-2">${product.price.toFixed(2)}</p>
+            <p className="text-lg font-bold mt-2">Rs.{product.price.toFixed(2)}</p>
           </CardContent>
           <CardFooter>
-            <Button className="w-full">Add to Cart</Button>
+            <Button className="w-full">Check availability</Button>
           </CardFooter>
         </Card>
       ))}
