@@ -1,8 +1,8 @@
 "use client"
 
-import { useState } from "react"
-import { ProductCategories } from "@/components/products/product-categories"
-import { ProductList } from "@/components/products/product-list"
+import { ProductCategories } from '@/components/products/product-categories';
+import { ProductList } from '@/components/products/product-list';
+import { useState } from 'react';
 
 const categories = [
   { id: "baby", name: "Baby Products" },
@@ -13,7 +13,7 @@ const categories = [
 ]
 
 export default function ProductsPage() {
-  const [selectedCategory, setSelectedCategory] = useState(categories[0].id)
+  const [selectedCategory, setSelectedCategory] = useState(categories[0].name) // Set category name instead of id
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -23,14 +23,13 @@ export default function ProductsPage() {
           <ProductCategories
             categories={categories}
             selectedCategory={selectedCategory}
-            onSelectCategory={setSelectedCategory}
+            onSelectCategory={(categoryName) => setSelectedCategory(categoryName)} // Pass name to setSelectedCategory
           />
         </div>
         <div className="md:w-3/4">
-          <ProductList categoryId={selectedCategory} />
+          <ProductList categoryId={selectedCategory} /> {/* Pass name here */}
         </div>
       </div>
     </div>
   )
 }
-
