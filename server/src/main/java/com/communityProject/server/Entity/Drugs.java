@@ -1,6 +1,7 @@
 package com.communityProject.server.Entity;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -40,11 +41,13 @@ public class Drugs {
     @Column(name = "pack_size", nullable = false)
     private int packSize;
 
-    @Column(name = "category", length = 100, nullable = false) 
-    private String category;
-
     @Lob
     @JsonIgnore
     @Column(name = "photo", columnDefinition = "LONGBLOB")
     private byte[] photo;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id", referencedColumnName = "category_id")
+    @JsonBackReference
+    private Category category;
 }

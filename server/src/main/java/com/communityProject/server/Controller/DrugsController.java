@@ -21,9 +21,9 @@ public class DrugsController {
     private DrugsService drugsService;
 
     // Get all products in a category
-    @GetMapping("/category/{category}")
-    public ResponseEntity<List<Drugs>> getProductsByCategory(@PathVariable String category) {
-        List<Drugs> drugs = drugsService.getProductsByCategory(category);
+    @GetMapping("/category/{categoryName}")
+    public ResponseEntity<List<Drugs>> getProductsByCategory(@PathVariable String categoryName) {
+        List<Drugs> drugs = drugsService.getProductsByCategory(categoryName);
         return (!drugs.isEmpty()) ? ResponseEntity.ok(drugs) : ResponseEntity.notFound().build();
     }
 
@@ -53,6 +53,12 @@ public class DrugsController {
             return ResponseEntity.status(404).body(null);
         }
     }
+
+    @GetMapping("/all")
+    public List<Drugs> getAllDrugs() {
+        return drugsService.getAllDrugs();
+    }
+
 
     // Get product image
     @GetMapping("/image/{id}")
