@@ -1,18 +1,16 @@
 package com.communityProject.server.DTO;
 
-import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Prescription_DTO {
+public class PrescriptionDTO {
 
     private String patientName;
     private String doctorName;

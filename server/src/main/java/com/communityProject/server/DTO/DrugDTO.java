@@ -1,20 +1,15 @@
 package com.communityProject.server.DTO;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.sql.Blob;
 
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class Drug_DTO {
+public class DrugDTO {
     private int id;
     private String drugName;
 
