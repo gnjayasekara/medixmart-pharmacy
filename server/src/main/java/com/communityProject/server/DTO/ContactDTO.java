@@ -1,6 +1,5 @@
 package com.communityProject.server.DTO;
 
-import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class Contact_DTO {
+public class ContactDTO {
     private Long id;
     private String name;
     private String email;

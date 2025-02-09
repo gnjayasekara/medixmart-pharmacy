@@ -1,27 +1,26 @@
 package com.communityProject.server.DTO;
 
-import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Prescription_DTO {
-
-    private Long id;
+public class PrescriptionDTO {
 
     private String patientName;
-
     private String doctorName;
-
     private String prescriptionDetails;
     private String patientAddress;
-    private int patientPhone;
-    private String fileUrl;
-    private Date createdDate;
+    private String patientPhone;
+    //  private LocalDateTime createdDate;
+
+    // Base64-encoded file
+    private String file;
+    private String fileType;
+    private LocalDateTime createdDate;
 }
