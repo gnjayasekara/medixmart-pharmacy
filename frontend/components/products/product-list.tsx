@@ -13,6 +13,7 @@ type ProductApiResponse = {
   drugSKU: string
   generic: string
   packSize: number
+  image?: string
 }
 
 // Frontend Product type
@@ -25,16 +26,28 @@ type Product = {
 }
 
 type ProductListProps = {
-  categoryId: string
+  categoryName: string
+  products: Array<{
+    id: string;
+    name: string;
+    description: string;
+    price: number;
+    image: string;
+  }>;
 }
 
 // Fetch the products by category with the correct response type
-async function fetchProductsByCategory(categoryName: string): Promise<Product[]> {
-  const response = await fetch(`http://localhost:8084/api/products/category/${categoryName}`)
-  if (!response.ok) {
-    console.error("Error fetching products:", response.statusText)
-    return []
-  }
+async function fetchProducts(categoryName: string): Promise<Product[]> {
+  const url =
+    categoryName === "all"
+      ? "http://localhost:8084/api/products/all"
+      : `http://localhost:8084/api/products/category/${categoryName}`
+
+  try {
+    const response = await fetch(url)
+    if (!response.ok) {
+      throw new Error(`Failed to fetch: ${response.statusText}`)
+    }
   
   // We cast the response data to ProductApiResponse[]
   const data: ProductApiResponse[] = await response.json()
@@ -45,22 +58,24 @@ async function fetchProductsByCategory(categoryName: string): Promise<Product[]>
     name: product.drugName,
     description: product.drugDescription,
     price: product.drugPrice,
-    image: "/placeholder.svg", // If there's no image field in the response, use a placeholder
+    image: product.image || "/placeholder.svg", // Use placeholder if no image
   }))
+} catch (error) {
+  console.error("Error fetching products:", error)
+  return []
+}
 }
 
-export function ProductList({ categoryId }: ProductListProps) {
+export function ProductList({ categoryName }: ProductListProps) {
   const [products, setProducts] = useState<Product[]>([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    if (categoryId) {
-      setLoading(true)
-      fetchProductsByCategory(categoryId)
-        .then(setProducts)
-        .finally(() => setLoading(false))
-    }
-  }, [categoryId]) // Trigger the fetch when categoryId changes
+    setLoading(true)
+    fetchProducts(categoryName)
+      .then(setProducts)
+      .finally(() => setLoading(false))
+  }, [categoryName]) 
 
   if (loading) {
     return <div>Loading products...</div>

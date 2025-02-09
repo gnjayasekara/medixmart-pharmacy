@@ -2,18 +2,52 @@
 
 import { ProductCategories } from '@/components/products/product-categories';
 import { ProductList } from '@/components/products/product-list';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const categories = [
-  { id: "baby", name: "Baby Products" },
-  { id: "medical", name: "Medical Devices" },
+  { id: "all", name: "All Products" },
+  { id: "baby products", name: "Baby Products" },
+  { id: "antibiotics", name: "Antibiotics" },
   { id: "otc", name: "Over-the-Counter" },
   { id: "personal", name: "Personal Care" },
   { id: "vitamins", name: "Vitamins & Supplements" },
 ]
 
 export default function ProductsPage() {
-  const [selectedCategory, setSelectedCategory] = useState(categories[0].name) // Set category name instead of id
+  const [selectedCategory, setSelectedCategory] = useState("all") 
+  const [products, setProducts] = useState([]) 
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      setLoading(true)
+      try {
+        const url =
+          selectedCategory === "all"
+            ? "http://localhost:8084/api/products/all"
+            : `http://localhost:8084/api/products/category/${selectedCategory}`
+
+        const response = await fetch(url)
+        const data = await response.json()
+
+        setProducts(
+          data.map((product: { id: number; drugName: string; drugDescription: string; drugPrice: number }) => ({
+            id: product.id.toString(),
+            name: product.drugName,
+            description: product.drugDescription,
+            price: product.drugPrice,
+            image: "/placeholder.svg", // Placeholder image
+          }))
+        )
+      } catch (error) {
+        console.error("Error fetching products:", error)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchProducts()
+  }, [selectedCategory])
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -23,11 +57,11 @@ export default function ProductsPage() {
           <ProductCategories
             categories={categories}
             selectedCategory={selectedCategory}
-            onSelectCategory={(categoryName) => setSelectedCategory(categoryName)} // Pass name to setSelectedCategory
+            onSelectCategory={(categoryName) => setSelectedCategory(categoryName)}
           />
         </div>
         <div className="md:w-3/4">
-          <ProductList categoryId={selectedCategory} /> {/* Pass name here */}
+          <ProductList categoryName={selectedCategory} products={products} /> {/* Pass name and products here */}
         </div>
       </div>
     </div>
