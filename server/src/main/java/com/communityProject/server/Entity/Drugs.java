@@ -1,6 +1,8 @@
 package com.communityProject.server.Entity;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,7 +32,7 @@ public class Drugs {
     @Column(name = "drug_description", length = 1000, nullable = false)
     private String drugDescription;
 
-    @Column(name = "drug_SKU", nullable = false, unique = true)
+    @Column(name = "drug_sku", nullable = false, unique = true)
     private String drugSKU;
 
     @Column(name = "generic", length = 100, nullable = false)
@@ -39,10 +41,13 @@ public class Drugs {
     @Column(name = "pack_size", nullable = false)
     private int packSize;
 
-    @Column(name = "category", length = 100, nullable = false) 
-    private String category;
-
     @Lob
+    @JsonIgnore
     @Column(name = "photo", columnDefinition = "LONGBLOB")
     private byte[] photo;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id", referencedColumnName = "category_id")
+    @JsonBackReference
+    private Category category;
 }

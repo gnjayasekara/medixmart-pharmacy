@@ -20,7 +20,7 @@ export function ProductCategories({ categories, selectedCategory, onSelectCatego
           key={category.id}
           variant={selectedCategory === category.id ? "default" : "outline"}
           className="w-full justify-start"
-          onClick={() => onSelectCategory(category.id)}
+          onClick={() => onSelectCategory(category.id)} // Update the selected category
         >
           {category.name}
         </Button>
@@ -28,4 +28,3 @@ export function ProductCategories({ categories, selectedCategory, onSelectCatego
     </div>
   )
 }
-

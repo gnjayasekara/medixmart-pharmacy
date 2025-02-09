@@ -21,9 +21,10 @@ public class DrugsController {
     private DrugsService drugsService;
 
     // Get all products in a category
-    @GetMapping("/{category}")
-    public List<Drugs> getProductsByCategory(@PathVariable String category) {
-        return drugsService.getProductsByCategory(category);
+    @GetMapping("/category/{categoryName}")
+    public ResponseEntity<List<Drugs>> getProductsByCategory(@PathVariable String categoryName) {
+        List<Drugs> drugs = drugsService.getProductsByCategory(categoryName);
+        return (!drugs.isEmpty()) ? ResponseEntity.ok(drugs) : ResponseEntity.notFound().build();
     }
 
     // Upload a new product with image
@@ -42,6 +43,22 @@ public class DrugsController {
             return ResponseEntity.status(500).body("Error uploading product.");
         }
     }
+
+    @GetMapping("/drug/{id}")
+    public ResponseEntity<Drugs> getDrugById(@PathVariable int id) {
+        Drugs drug = drugsService.getDrugById(id);
+        if (drug != null) {
+            return ResponseEntity.ok(drug);
+        } else {
+            return ResponseEntity.status(404).body(null);
+        }
+    }
+
+    @GetMapping("/all")
+    public List<Drugs> getAllDrugs() {
+        return drugsService.getAllDrugs();
+    }
+
 
     // Get product image
     @GetMapping("/image/{id}")

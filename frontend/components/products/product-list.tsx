@@ -4,6 +4,19 @@ import { useEffect, useState } from "react"
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 
+// Define the structure of the product response from the backend
+type ProductApiResponse = {
+  id: number
+  drugName: string
+  drugDescription: string
+  drugPrice: number
+  drugSKU: string
+  generic: string
+  packSize: number
+  image?: string
+}
+
+// Frontend Product type
 type Product = {
   id: string
   name: string
@@ -13,125 +26,56 @@ type Product = {
 }
 
 type ProductListProps = {
-  categoryId: string
+  categoryName: string
+  products: Array<{
+    id: string;
+    name: string;
+    description: string;
+    price: number;
+    image: string;
+  }>;
 }
 
-// This is a mock function to simulate fetching products from an API
-async function fetchProductsByCategory(categoryId: string): Promise<Product[]> {
-  // In a real application, this would be an API call
-  await new Promise((resolve) => setTimeout(resolve, 500)) // Simulate network delay
+// Fetch the products by category with the correct response type
+async function fetchProducts(categoryName: string): Promise<Product[]> {
+  const url =
+    categoryName === "all"
+      ? "http://localhost:8084/api/products/all"
+      : `http://localhost:8084/api/products/category/${categoryName}`
 
-  // Mock data
-  const products: Record<string, Product[]> = {
-    baby: [
-      {
-        id: "b1",
-        name: "Baby Diapers",
-        description: "Ultra-soft diapers for sensitive skin",
-        price: 2500,
-        image: "products/Ceretide-250mg_carelink-300x300.jpg?height=200&width=200&text=Baby+Diapers",
-      },
-      {
-        id: "b1",
-        name: "Baby Diapers",
-        description: "Ultra-soft diapers for sensitive skin",
-        price: 1900,
-        image: "products/Foracort-Dp-Caps-200-Mcg_Carelink-300x300.jpg?height=200&width=200&text=Baby+Diapers",
-      },
-      {
-        id: "b1",
-        name: "Baby Diapers",
-        description: "Ultra-soft diapers for sensitive skin",
-        price: 1300,
-        image: "products/Ceretide-250mg_carelink-300x300.jpg?height=200&width=200&text=Baby+Diapers",
-      },
-      {
-        id: "b2",
-        name: "Baby Wipes",
-        description: "Gentle, fragrance-free wipes",
-        price: 600,
-        image: "products/Ceretide-250mg_carelink-300x300.jpg?height=200&width=200&text=Baby+Diapers",
-      },
-    ],
-    medical: [
-      {
-        id: "m1",
-        name: "Digital Thermometer",
-        description: "Fast and accurate temperature readings",
-        price: 1500,
-        image: "/placeholder.svg?height=200&width=200&text=Thermometer",
-      },
-      {
-        id: "m2",
-        name: "Blood Pressure Monitor",
-        description: "Easy-to-use home BP monitor",
-        price: 4300,
-        image: "/placeholder.svg?height=200&width=200&text=BP+Monitor",
-      },
-    ],
-    otc: [
-      {
-        id: "o1",
-        name: "Pain Relief Tablets",
-        description: "Fast-acting pain relief",
-        price: 800,
-        image: "/placeholder.svg?height=200&width=200&text=Pain+Relief",
-      },
-      {
-        id: "o2",
-        name: "Cough Syrup",
-        description: "Soothes throat and suppresses cough",
-        price: 700,
-        image: "/placeholder.svg?height=200&width=200&text=Cough+Syrup",
-      },
-    ],
-    personal: [
-      {
-        id: "p1",
-        name: "Toothpaste",
-        description: "Fluoride toothpaste for cavity protection",
-        price: 3420,
-        image: "/placeholder.svg?height=200&width=200&text=Toothpaste",
-      },
-      {
-        id: "p2",
-        name: "Shampoo",
-        description: "Nourishing shampoo for all hair types",
-        price: 8940,
-        image: "/placeholder.svg?height=200&width=200&text=Shampoo",
-      },
-    ],
-    vitamins: [
-      {
-        id: "v1",
-        name: "Multivitamin",
-        description: "Daily multivitamin for adults",
-        price: 1599,
-        image: "/placeholder.svg?height=200&width=200&text=Multivitamin",
-      },
-      {
-        id: "v2",
-        name: "Vitamin C",
-        description: "Immune system support",
-        price: 999,
-        image: "/placeholder.svg?height=200&width=200&text=Vitamin+C",
-      },
-    ],
-  }
+  try {
+    const response = await fetch(url)
+    if (!response.ok) {
+      throw new Error(`Failed to fetch: ${response.statusText}`)
+    }
+  
+  // We cast the response data to ProductApiResponse[]
+  const data: ProductApiResponse[] = await response.json()
 
-  return products[categoryId] || []
+  // Map the response to the Product type
+  return data.map((product) => ({
+    id: product.id.toString(),
+    name: product.drugName,
+    description: product.drugDescription,
+    price: product.drugPrice,
+    image: product.image || "/placeholder.svg", // Use placeholder if no image
+  }))
+} catch (error) {
+  console.error("Error fetching products:", error)
+  return []
+}
 }
 
-export function ProductList({ categoryId }: ProductListProps) {
+export function ProductList({ categoryName }: ProductListProps) {
   const [products, setProducts] = useState<Product[]>([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     setLoading(true)
-    fetchProductsByCategory(categoryId)
+    fetchProducts(categoryName)
       .then(setProducts)
       .finally(() => setLoading(false))
-  }, [categoryId])
+  }, [categoryName]) 
 
   if (loading) {
     return <div>Loading products...</div>
@@ -159,4 +103,3 @@ export function ProductList({ categoryId }: ProductListProps) {
     </div>
   )
 }
-
