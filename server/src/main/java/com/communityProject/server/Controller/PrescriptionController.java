@@ -42,6 +42,7 @@ public class PrescriptionController {
 
 
 
+import com.communityProject.server.DTO.PrescriptionDTO;
 import com.communityProject.server.Service.PrescriptionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
