@@ -22,6 +22,8 @@ const PrescriptionForm: React.FC = () => {
     patientPhone: "",
   });
 
+  const [error, setError] = useState<string>("");
+
   // Handle input changes
   const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -38,8 +40,38 @@ const PrescriptionForm: React.FC = () => {
       file: e.target.files ? e.target.files[0] : null,
     }));
   };
+/*
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
-  // Handle form submission
+    const formData = new FormData();
+    formData.append("patientName", prescriptionData.patientName);
+    formData.append("doctorName", prescriptionData.doctorName);
+    formData.append("prescriptionDetails", prescriptionData.prescriptionDetails);
+    formData.append("patientAddress", prescriptionData.patientAddress);
+    formData.append("patientPhone", prescriptionData.patientPhone);
+    if (prescriptionData.file) {
+      formData.append("file", prescriptionData.file);
+    }
+
+    try {
+      const response = await fetch("http://localhost:8084/api/prescription", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        alert("Prescription uploaded successfully!");
+        setError(""); // Reset error on success
+      } else {
+        const errorMessage = await response.text();
+        setError(`Failed to upload prescription: ${errorMessage}`);
+      }
+    } catch (error) {
+      console.error("Error submitting prescription:", error);
+      setError("Error uploading prescription.");
+    }
+  };*/
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
   
@@ -48,7 +80,7 @@ const PrescriptionForm: React.FC = () => {
     formData.append("doctorName", prescriptionData.doctorName);
     formData.append("prescriptionDetails", prescriptionData.prescriptionDetails);
     formData.append("patientAddress", prescriptionData.patientAddress);
-    formData.append("patientPhone", prescriptionData.patientPhone); // Ensure it's a string
+    formData.append("patientPhone", prescriptionData.patientPhone);
     if (prescriptionData.file) {
       formData.append("file", prescriptionData.file);
     }
@@ -60,28 +92,27 @@ const PrescriptionForm: React.FC = () => {
       });
   
       if (response.ok) {
-        const result = await response.json();
-        console.log("Prescription submitted successfully:", result);
         alert("Prescription uploaded successfully!");
+        setError(""); // Reset error on success
       } else {
-        console.error("Failed to submit prescription:", response.statusText);
-        /***** */
-        alert("Prescription uploaded successfully");
+        const errorMessage = await response.text();
+        setError(`Failed to upload prescription: ${errorMessage}`);
+        console.error('Error response:', errorMessage);  // Log error to the console
       }
     } catch (error) {
       console.error("Error submitting prescription:", error);
-      /*** */
-      alert("Prescription uploaded successfully");
+      setError("Error uploading prescription.");
     }
   };
   
-
   return (
     <div className="bg-green-50 py-8 px-6 md:px-12 lg:px-24 rounded-lg shadow-lg max-w-5xl mx-auto mt-8 relative">
       <div className="text-center mb-6">
         <h2 className="text-3xl font-bold text-gray-800">Prescription Upload</h2>
         <p className="text-lg text-gray-500">Please fill out the form to upload prescription details.</p>
       </div>
+
+      {error && <div className="text-red-500 mb-4">{error}</div>} {/* Display error message */}
 
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Patient Name */}

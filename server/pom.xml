@@ -46,11 +46,6 @@
 			<version>2.1.0</version>
 		</dependency>
 
-		<!-- Spring Security Dependency -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
 
 
 
