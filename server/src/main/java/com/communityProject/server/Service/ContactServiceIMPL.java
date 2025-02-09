@@ -18,7 +18,7 @@ public class ContactServiceIMPL implements ContactService{
     }
 
     // Implement the method to retrieve all contacts (optional)
-   /* @Override
+   /* @OverrideZ
     public List<Contact> getAllContacts() {
         return contactRepository.findAll();
     }*/

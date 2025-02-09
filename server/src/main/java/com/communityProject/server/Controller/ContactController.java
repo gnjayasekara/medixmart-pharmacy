@@ -22,9 +22,5 @@ public class ContactController {
         return ResponseEntity.ok(savedContact);
     }
 
-    // Optional: GET request to fetch all contacts (if needed)
-   /* @GetMapping
-    public ResponseEntity<?> getAllContacts() {
-        return ResponseEntity.ok(contactService.getAllContacts());
-    }*/
+
 }
