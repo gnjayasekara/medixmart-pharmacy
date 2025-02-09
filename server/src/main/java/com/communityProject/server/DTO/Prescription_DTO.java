@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 
@@ -13,15 +14,15 @@ import java.util.Date;
 @AllArgsConstructor
 public class Prescription_DTO {
 
-    private Long id;
-
     private String patientName;
-
     private String doctorName;
-
     private String prescriptionDetails;
     private String patientAddress;
-    private int patientPhone;
-    private String fileUrl;
-    private Date createdDate;
+    private String patientPhone;
+    //  private LocalDateTime createdDate;
+
+    // Base64-encoded file
+    private String file;
+    private String fileType;
+    private LocalDateTime createdDate;
 }

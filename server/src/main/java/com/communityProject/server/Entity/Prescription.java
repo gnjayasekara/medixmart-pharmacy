@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -16,31 +18,22 @@ import java.util.Date;
 public class Prescription {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "patient_name", length = 100, nullable = false)
     private String patientName;
-
-    @Column(name = "doctor_name", length = 100, nullable = false)
     private String doctorName;
-
-    @Column(name = "prescriptionDetails", length = 100, nullable = false)
     private String prescriptionDetails;
-
-    @Column(name = "patientAddress", length = 100, nullable = false)
     private String patientAddress;
+    private String patientPhone;
+    @Column(name = "created_date", nullable = false, updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    private LocalDateTime createdDate;
 
-    @Column(name = "patientPhone", length = 100, nullable = false)
-    private int patientPhone;
+    private LocalDate uploadDate;
 
-    @Column(name = "fileUrl", length = 100, nullable = false)
-    private String fileUrl;
+    @Lob
+    private byte[] file; // Storing file as binary data
 
-    @Column(name = "createdDate", length = 100, nullable = false)
-    private Date createdDate;
-    @PrePersist
-    public void prePersist() {
-        this.createdDate = new Date();
-    }
+    private String fileType;
 }
 
