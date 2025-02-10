@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.Base64;
+import java.util.List;
 
 @Service
 public class PrescriptionServiceImpl implements PrescriptionService {
@@ -43,6 +44,13 @@ public class PrescriptionServiceImpl implements PrescriptionService {
             return "Error saving prescription: " + e.getMessage();
         }
     }
+
+    @Override
+    public List<Prescription> getAllPrescription() {
+        return prescriptionRepository.findAll();
+    }
+
+
 }
 
     

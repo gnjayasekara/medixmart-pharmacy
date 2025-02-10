@@ -43,6 +43,8 @@ public class PrescriptionController {
 
 
 import com.communityProject.server.DTO.PrescriptionDTO;
+import com.communityProject.server.Entity.Drugs;
+import com.communityProject.server.Entity.Prescription;
 import com.communityProject.server.Service.PrescriptionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -52,6 +54,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
 import java.util.Base64;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/prescription")
@@ -91,5 +94,11 @@ public class PrescriptionController {
             e.printStackTrace();
             return new ResponseEntity<>("Error uploading prescription: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+
+    @GetMapping("/admin/prescription")
+    public List<Prescription> getAllPrescription() {
+        return prescriptionService.getAllPrescription();
     }
 }
