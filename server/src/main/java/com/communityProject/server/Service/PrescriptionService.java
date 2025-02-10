@@ -9,6 +9,8 @@ import java.util.List;
 public interface PrescriptionService {
    String savePrescription(PrescriptionDTO prescriptionDTO);
 
-   List<Prescription> getAllDrugs();
+
+
+   List<Prescription> getAllPrescription();
 }
 

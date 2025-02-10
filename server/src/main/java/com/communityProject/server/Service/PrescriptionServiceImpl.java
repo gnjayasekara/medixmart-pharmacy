@@ -46,9 +46,11 @@ public class PrescriptionServiceImpl implements PrescriptionService {
     }
 
     @Override
-    public List<Prescription> getAllDrugs() {
+    public List<Prescription> getAllPrescription() {
         return prescriptionRepository.findAll();
     }
+
+
 }
 
     

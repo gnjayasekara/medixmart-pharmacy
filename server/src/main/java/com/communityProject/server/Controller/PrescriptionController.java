@@ -99,6 +99,6 @@ public class PrescriptionController {
 
     @GetMapping("/admin/prescription")
     public List<Prescription> getAllPrescription() {
-        return prescriptionService.getAllDrugs();
+        return prescriptionService.getAllPrescription();
     }
 }
