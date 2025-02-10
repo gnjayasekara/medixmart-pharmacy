@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.Base64;
 import java.util.List;
 
 @RestController
@@ -62,13 +63,19 @@ public class DrugsController {
 
     // Get product image
     @GetMapping("/image/{id}")
-    public ResponseEntity<byte[]> getProductImage(@PathVariable int id) {
+    public ResponseEntity<String> getProductImage(@PathVariable int id) {
         try {
             byte[] image = drugsService.getProductImage(id);
+            if (image == null) {
+                return ResponseEntity.status(404).body(null);
+            }
+
+            // Convert byte array to Base64 string
+            String base64Image = Base64.getEncoder().encodeToString(image);
+
             return ResponseEntity.ok()
-                    .header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=\"image.jpg\"")
-                    .contentType(MediaType.IMAGE_JPEG)
-                    .body(image);
+                    .contentType(MediaType.TEXT_PLAIN)
+                    .body(base64Image);  // Send the Base64 string
         } catch (RuntimeException e) {
             return ResponseEntity.status(404).body(null);
         }
