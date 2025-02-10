@@ -42,7 +42,6 @@ public class Drugs {
     private int packSize;
 
     @Lob
-    @JsonIgnore
     @Column(name = "photo", columnDefinition = "LONGBLOB")
     private byte[] photo;
 
